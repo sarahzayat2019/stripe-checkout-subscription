@@ -1,0 +1,23 @@
+<ng-container *ngIf="session.status === 'paid'">
+    <button type="button" routerLink="/">Go Back</button>
+    <h2>Success!</h2>
+    <h3>{{session.email}} paid {{session.subTotal}} for this session</h3>
+</ng-container>
+<ng-container *ngIf="invoices.length > 0">
+    <h2>Invoices for {{session.customerId}}</h2>
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Amount</th>
+            <th>Date</th>
+            <th>Invoice</th>
+        </tr>
+        <tr *ngFor="let invoice of invoices">
+            <td>{{invoice.id}}</td>
+            <td>{{invoice.subTotal}}</td>
+            <td>{{(Number(invoice.date) * 1000) | date :'dd/MM/yyyy'}}</td>
+            <td><a [href]="invoice.pdf" target="_blank">download invoice</a></td>
+        </tr>
+
+    </table>
+</ng-container>

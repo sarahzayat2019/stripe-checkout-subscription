@@ -1,0 +1,40 @@
+<p>logged in as customer id: {{customerId}}</p>
+<a href="http://localhost:4200/success?session_id=cs_test_a1h3Zvhw5hAWusOGX4MUvWCqLBqG5y5kCslIhXRtm0ajRen57ptGzbE17W">Test This session result</a>
+<br>
+<h2>Start Subscription</h2>
+<form #f="ngForm" (ngSubmit)="startSubscription()">
+    <select name="selectedPlan" [(ngModel)]="selectedPlan"   (ngModelChange)="selectPlan($event)">
+        <option value="price_1OX0FvFi80pb8cvO5g45mTSS">Expert Yearly</option>
+        <option value="price_1OX0FvFi80pb8cvO4BpSfMO5">Expert Monthly</option>
+        <option value="price_1OX0FvFi80pb8cvO1NL86o5h">Essential Yearly</option>
+        <option value="price_1OX0FvFi80pb8cvOi1jbekCQ">Essential Monthly</option>
+    </select>
+    <label>Locations Count</label>
+    <input type="number" min="1"
+           name="locationCount"
+           (ngModelChange)="onCountChange($event)" [(ngModel)]="locationCount" >
+
+    <button type="submit">Start Subscription</button>
+</form>
+<br>
+<h2>Cancel Subscription</h2>
+<form #cancelForm="ngForm" (ngSubmit)="cancelSubscription()">
+    <input type="text"
+           name="subscriptionId"
+           placeholder="subscription id"
+           [(ngModel)]="subscriptionId" >
+    <button type="submit">Cancel Subscription</button>
+</form>
+<br>
+<h2>Update Subscription</h2>
+<form #updateForm="ngForm" (ngSubmit)="updateSubscription()">
+    <input type="text"
+           name="subscriptionId"
+           placeholder="current subscription id"
+           [(ngModel)]="updateSubscriptionId" >
+    <input type="text"
+           name="newPriceId"
+           placeholder="new price id"
+           [(ngModel)]="newPriceId" >
+    <button type="submit">Update Subscription</button>
+</form>
